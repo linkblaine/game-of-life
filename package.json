@@ -7,10 +7,15 @@
     "http-server": "^0.8.0"
   },
   "devDependencies": {
-    "http-server": "^0.8.0"
+    "http-server": "^0.8.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.32",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.1.4"
   },
   "scripts": {
-    "start": "./node_modules/.bin/http-server"
+    "start": "./node_modules/.bin/http-server",
+    "test": "./node_modules/karma/bin/karma start my.conf.js"
   },
   "repository": {
     "type": "git",
