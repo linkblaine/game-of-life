@@ -3,3 +3,7 @@ var Cell = function(x,y){
   this.y = y;
   this.coordinates = {"x": x, "y": y};
 };
+
+Cell.prototype.getKey = function(){
+  return this.x + ":" + this.y;
+};
