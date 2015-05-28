@@ -3,7 +3,7 @@ var Board = function(cells){
 
   for(var i = 0; i < cells.length; i++){
     cell = cells[i];
-    this.coordinates[cell.x + ":" + cell.y] = cell;
+    this.coordinates[cell.getKey()] = cell;
   }
 
 };
