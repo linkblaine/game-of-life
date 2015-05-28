@@ -32,4 +32,17 @@ describe('Cell', function(){
       expect(testCell.getKey()).toEqual('0:0'); 
     });
   });
+  
+  describe('Cell isAlive', function(){
+
+    it('Should initalize /w false', function(){
+      expect(testCell.isAlive).toBeDefined();  
+      expect(testCell.isAlive).toBe( false );  
+    });
+
+    it('Should able to initalize as true', function(){
+      var aliveCell = new Cell(0, 0, true );
+      expect( aliveCell.isAlive ).toBe( true ); 
+    });
+  });
 });
