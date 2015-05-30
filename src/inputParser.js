@@ -6,7 +6,7 @@ var inputParser = function(){
     for(var i=0; i<rows.length; i++){
       var columns = rows[i].split('');
       for(var j=0; j<columns.length; j++){
-        cells.push( new Cell(i,j) );
+        cells.push( new Cell(i,j, (columns[j] == 'x') ) );
       }
     }
     return cells; 
