@@ -7,3 +7,39 @@ var Board = function(cells){
   }
 
 };
+
+Board.prototype.getCellStatus = function( cell ){
+
+  var neighbors = cell.neighborKeys();
+  var neighborCount = 0;
+  for(var i = 0; i < neighbors.length; i++){
+    neighborCell = this.coordinates[ neighbors[i] ];
+    if(neighborCell.isAlive){
+      neighborCount++;
+    }
+  }
+
+  return this.gameLogic( cell.isAlive, neighborCount);
+};
+
+Board.prototype.gameLogic = function( isAlive, neighborCount ){
+  
+  var cellStatus = false; 
+
+  switch( neighborCount )
+  {
+    case 2:
+      cellStatus = isAlive;
+      break;
+    case 3:
+      cellStatus = true; 
+      break;
+    default:
+      cellStatus = false;
+      break;
+  }
+
+  return cellStatus;
+};
+
+
