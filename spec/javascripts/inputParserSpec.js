@@ -14,7 +14,7 @@ describe('inputParser', function(){
     expect(inputParser.parse(gameInput)).toContain(new Cell(0,1));
     expect(inputParser.parse(gameInput)).toContain(new Cell(0,2));
     expect(inputParser.parse(gameInput)).toContain(new Cell(1,0));
-    expect(inputParser.parse(gameInput)).toContain(new Cell(1,1));
+    expect(inputParser.parse(gameInput)).toContain(new Cell(1,1, true));
     expect(inputParser.parse(gameInput)).toContain(new Cell(1,2));
     expect(inputParser.parse(gameInput)).toContain(new Cell(2,0));
     expect(inputParser.parse(gameInput)).toContain(new Cell(2,1));
