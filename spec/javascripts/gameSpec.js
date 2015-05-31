@@ -17,10 +17,21 @@ describe( 'Game', function(){
     it('w/ numberOfIteration', function(){
       expect(game.numberOfIterations).toBeDefined(); 
     }); 
+
     it('w/ timeout', function(){
       expect(game.timeout).toBeDefined(); 
     }); 
     
+  });
+
+  describe( "Game#iterate" , function(){
+    beforeEach(function(){
+      game = new Game(); 
+    }); 
+
+    it('should be defined', function(){
+      expect(game.iterate).toBeDefined(); 
+    });
   });
 
 });

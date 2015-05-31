@@ -14,8 +14,13 @@ Game.prototype.init = function(){
                       '-xxx-,' +
                       '--x--,' +
                       '-----,' ;
+
   this.cells = inputParser.parse( this.initialState ); 
   this.board = new Board( this.cells );
   this.numberOfIterations = 100;
   this.timeout = 500;
 };
+
+Game.prototype.iterate = function(){
+
+}
