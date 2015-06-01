@@ -1,6 +1,5 @@
 var Board = function(cells){
   this.coordinates = {}; 
-
   for(var i = 0; i < cells.length; i++){
     cell = cells[i];
     this.coordinates[cell.getKey()] = cell;
@@ -14,7 +13,7 @@ Board.prototype.getCellStatus = function( cell ){
   var neighborCount = 0;
   for(var i = 0; i < neighbors.length; i++){
     neighborCell = this.coordinates[ neighbors[i] ];
-    if(neighborCell.isAlive){
+    if(neighborCell && neighborCell.isAlive){
       neighborCount++;
     }
   }
