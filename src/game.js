@@ -26,7 +26,6 @@ Game.prototype.init = function(initialState){
 };
 
 Game.prototype.iterate = function(){
-  var self = this;
   var cellsToChange =  $.map( this.board.coordinates, function(cell){
     return cell.board.shouldFlipCell( cell ) ? cell : undefined;
   });
@@ -34,11 +33,11 @@ Game.prototype.iterate = function(){
   $.each( cellsToChange, function(){
     this.isAlive = !this.isAlive;
   })
-
 };
 
 Game.prototype.toString = function(){
   var str = '';
+
   for(key in this.board.coordinates){
     str = str + ( this.board.coordinates[key].isAlive ? "x" : "-"); 
   }
