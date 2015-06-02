@@ -23,11 +23,13 @@ The game board by default is set to be one single blinker. The Board is dynamica
 To change the initial state of the board, modify the main.js file to pass in the new board state.
 
 **Rules**
+
 1. Everyline must end in a comma, including the last line.
 2. Dead Cells are represented by a '-'.
 3. Alive Cells are represented by a  'x'.
 
 ** main.js**
+
 ```javascript
 
 var initialState = 
@@ -36,12 +38,12 @@ var initialState =
 '-----------xx-------,' +
 '----xx----xx--------,' +
 '-----xx-xx---x------,' +
-'--x---xx-----x------,' +
-'--x----xx----x------,' +
-'---xx---------------,' +
-'------xx--xxx-------,' +
-'--------------------,' +
-'--------------------,' +
+'x-x---xx-----x------,' +                                                                                            
+'x-x----xx----x------,' + 
+'x--xx---------------,' +
+'xxx---xx--xxx-------,' +
+'x------------------,' +
+'x-------------------,';
 
 var game = new Game(initialState); 
 ```
