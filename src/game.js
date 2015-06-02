@@ -27,10 +27,9 @@ Game.prototype.init = function(initialState){
 
 Game.prototype.iterate = function(){
   var self = this;
-
   var cellsToChange =  $.map( this.board.coordinates, function(cell){
-    return this.board.shouldFlipCell( cell ) ? cell : undefined;
-  }.bind(self) );
+    return cell.board.shouldFlipCell( cell ) ? cell : undefined;
+  });
 
   $.each( cellsToChange, function(){
     this.isAlive = !this.isAlive;

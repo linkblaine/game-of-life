@@ -3,6 +3,7 @@ var Cell = function(x, y, isAlive){
   this.y = y;
   this.isAlive = isAlive || false;
   this.coordinates = {"x": x, "y": y};
+  this.board;
 };
 
 Cell.prototype.getKey = function(){
