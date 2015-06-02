@@ -22,7 +22,7 @@ Game.prototype.init = function(initialState){
   this.numberOfIterations = 100;
   this.timeout = 500;
   this.numberOfRows = (this.initialState.match(/,/g) || []).length;
-  this.numberOfColumns = this.initialState.split(',')[0].split('').length - 1;
+  this.numberOfColumns = this.initialState.split(',')[0].split('').length;
 };
 
 Game.prototype.iterate = function(){
