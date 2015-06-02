@@ -4,6 +4,8 @@ var Game = function(initialState){
   this.board;
   this.numberOfIterations;
   this.timeout;
+  this.numberOfRows;
+  this.numberOfColumns;
 
   this.init(initialState);
 };
