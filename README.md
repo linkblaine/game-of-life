@@ -28,7 +28,7 @@ To change the initial state of the board, modify the main.js file to pass in the
 2. Dead Cells are represented by a '-'.
 3. Alive Cells are represented by a  'x'.
 
-** main.js**
+**main.js**
 
 ```javascript
 
