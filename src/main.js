@@ -4,10 +4,10 @@ $(document).ready(function(){
   drawBoard( game.numberOfRows, game.numberOfColumns);
   paintCells( game.board );
 
-  window.setInterval(function(){
+  setInterval( function(){
     game.iterate();
     paintCells( game.board );
-  }.bind(document), 500);
+  }, 500);
 
 });
 
