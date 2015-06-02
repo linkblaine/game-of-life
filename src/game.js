@@ -20,24 +20,19 @@ Game.prototype.init = function(initialState){
   this.numberOfIterations = 100;
   this.timeout = 500;
   this.numberOfRows = (this.initialState.match(/,/g) || []).length;
+  this.numberOfColumns = this.initialState.split(',')[0].split('').length - 1;
 };
 
 Game.prototype.iterate = function(){
   var self = this;
-  var cellsToChange = [];
 
-  for( key in this.board.coordinates){ 
-    var curCell = this.board.coordinates[key]; 
-    var newCellStatus = this.board.getCellStatus( curCell );
-    if(newCellStatus != curCell.isAlive){
-      cellsToChange.push( curCell.getKey() );
-    }
-  }
+  var cellsToChange =  $.map( this.board.coordinates, function(cell){
+    return this.board.shouldFlipCell( cell ) ? cell : undefined;
+  }.bind(self) );
 
-  for( key in cellsToChange ){
-    var cellStatus = this.board.coordinates[ cellsToChange[key] ].isAlive;
-    this.board.coordinates[ cellsToChange[key] ].isAlive = !cellStatus;
-  }
+  $.each( cellsToChange, function(){
+    this.isAlive = !this.isAlive;
+  })
 
 };
 

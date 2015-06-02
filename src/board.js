@@ -1,5 +1,6 @@
 var Board = function(cells){
   this.coordinates = {}; 
+
   for(var i = 0; i < cells.length; i++){
     cell = cells[i];
     this.coordinates[cell.getKey()] = cell;
@@ -8,7 +9,6 @@ var Board = function(cells){
 };
 
 Board.prototype.getCellStatus = function( cell ){
-
   var neighbors = cell.neighborKeys();
   var neighborCount = 0;
   for(var i = 0; i < neighbors.length; i++){
@@ -41,4 +41,7 @@ Board.prototype.gameLogic = function( isAlive, neighborCount ){
   return cellStatus;
 };
 
+Board.prototype.shouldFlipCell = function( cell ){
+  return this.getCellStatus( cell ) != cell.isAlive;
 
+};
