@@ -16,8 +16,8 @@ var paintCells= function(board){
   $.each(board.coordinates, function(cell){
     point = cell.split(':');
    
-    var rowId = 'row-' + point[1]; 
-    var colId = 'column-' + point[0]; 
+    var rowId = 'row-' + point[0]; 
+    var colId = 'column-' + point[1]; 
     $('#'+rowId + '>#' +colId).toggleClass('alive', board.coordinates[cell].isAlive  ); 
   });  
 
