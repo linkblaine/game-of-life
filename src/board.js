@@ -23,23 +23,7 @@ Board.prototype.getCellStatus = function( cell ){
 };
 
 Board.prototype.gameLogic = function( isAlive, neighborCount ){
-  
-  var cellStatus = false; 
-
-  switch( neighborCount )
-  {
-    case 2:
-      cellStatus = isAlive;
-      break;
-    case 3:
-      cellStatus = true; 
-      break;
-    default:
-      cellStatus = false;
-      break;
-  }
-
-  return cellStatus;
+  return ( isAlive && neighborCount == 2 ) || neighborCount == 3;
 };
 
 Board.prototype.shouldFlipCell = function( cell ){
