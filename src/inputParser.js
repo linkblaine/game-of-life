@@ -9,7 +9,10 @@ var inputParser = function(){
         cells.push( new Cell(i,j, (columns[j] == 'x') ) );
       }
     }
-    return cells; 
+    return {cells: cells,
+            columnCount: rawBoard.split(',')[0].split('').length,
+            rowCount: (rawBoard.match(/,/g) || []).length
+    }
   };
   return {parse: parse};
 }();

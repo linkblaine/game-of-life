@@ -16,13 +16,14 @@ Game.prototype.init = function(initialState){
                                       '--x--,' +
                                       '--x--,' +
                                       '-----,' ;
+  var input = inputParser.parse( this.initialState ); 
+  this.cells = input.cells;
+  this.numberOfRows = input.rowCount;
+  this.numberOfColumns = input.columnCount;
 
-  this.cells = inputParser.parse( this.initialState ); 
   this.board = new Board( this.cells );
   this.numberOfIterations = 100;
   this.timeout = 500;
-  this.numberOfRows = (this.initialState.match(/,/g) || []).length;
-  this.numberOfColumns = this.initialState.split(',')[0].split('').length;
 };
 
 Game.prototype.iterate = function(){
