@@ -5,24 +5,6 @@ describe('Cell', function(){
     testCell = new Cell(0,0); 
   });
 
-  describe('Should initalize', function(){
-    it('Cell', function(){
-      expect(testCell).toBeDefined();
-    });
-
-    it('w/ x-coordinate', function(){
-      expect(testCell.x).toBe(0); 
-    });
-
-    it('w/ y-coordinate', function(){
-      expect(testCell.y).toBe(0); 
-    });
-
-    it('w/ coordinate object', function(){
-      expect(testCell.coordinates).toEqual({x:0, y:0}); 
-    });
-  });
-
   describe('getKey', function(){
     it('Should have a getKey function', function(){
       expect(testCell.getKey).toBeDefined();  

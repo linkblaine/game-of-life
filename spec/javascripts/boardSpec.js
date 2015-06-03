@@ -1,59 +1,39 @@
 describe('Board', function(){
   var testBoard;
   var gameInput;
- 
-  beforeEach(function(){
-    gameInput = "---,-x-,---";
-    testBoard = new Board( inputParser.parse( gameInput ) );
-  });
-
-  describe('Should Initalize', function(){ 
-    it('Board', function(){
-      expect(testBoard).toBeDefined(); 
-    });
-
-    it('Board w/ coordinates', function(){
-      expect(testBoard.coordinates).toBeDefined(); 
-    });
-
-    it('Board w/ the correct number of coordinates', function(){
-      coordCount = Object.keys(testBoard.coordinates).length;
-      expect(coordCount).toEqual(9); 
-    });
-  });
 
   describe('getCellStatus', function(){
     it('Should kill a cell if neighbors < 2', function(){
       gameInput = "x--,-x-,---";
-      testBoard = new Board( inputParser.parse( gameInput ) );
+      testBoard = new Board( inputParser.parse( gameInput ).cells );
       var testCell = testBoard.coordinates["1:1"];
       expect( testBoard.getCellStatus( testCell ) ).toBe( false );
     });
 
     it('Should kill a cell if neighbors > 3', function(){
       gameInput = "xx-,-x-,-xx";
-      testBoard = new Board( inputParser.parse( gameInput ) );
+      testBoard = new Board( inputParser.parse( gameInput ).cells );
       var testCell = testBoard.coordinates["1:1"];
       expect( testBoard.getCellStatus( testCell ) ).toBe( false );
     }); 
 
     it('Should persist a cell if neighbors are 2', function(){
       gameInput = "x--,-x-,--x";
-      testBoard = new Board( inputParser.parse( gameInput ) );
+      testBoard = new Board( inputParser.parse( gameInput ).cells );
       var testCell = testBoard.coordinates["1:1"];
       expect( testBoard.getCellStatus( testCell ) ).toBe( true );
     });
 
     it('Should persist a cell if neighbors are 3', function(){
       gameInput = "x--,-x-,-xx";
-      testBoard = new Board( inputParser.parse( gameInput ) );
+      testBoard = new Board( inputParser.parse( gameInput ).cells  );
       var testCell = testBoard.coordinates["1:1"];
       expect( testBoard.getCellStatus( testCell ) ).toBe( true );
     });
 
     it('Should live if alive neighbors = 3', function(){
       gameInput = "x-x,---,--x";
-      testBoard = new Board( inputParser.parse( gameInput ) );
+      testBoard = new Board( inputParser.parse( gameInput ).cells );
       var testCell = testBoard.coordinates["1:1"];
       expect( testBoard.getCellStatus( testCell ) ).toBe( true );
     });
@@ -117,22 +97,6 @@ describe('Board', function(){
 
       it('isAlive = false, neighborCount = 4', function(){
         expect(testBoard.gameLogic(false,4)).toBe(false);
-      });
-
-      it('isAlive = false, neighborCount = 5', function(){
-        expect(testBoard.gameLogic(false,5)).toBe(false);
-      });
-
-      it('isAlive = false, neighborCount = 6', function(){
-        expect(testBoard.gameLogic(false,6)).toBe(false);
-      });
-
-      it('isAlive = false, neighborCount = 7', function(){
-        expect(testBoard.gameLogic(false,7)).toBe(false);
-      });
-      
-      it('isAlive = false, neighborCount = 8', function(){
-        expect(testBoard.gameLogic(false,8)).toBe(false);
       });
     });
   });
