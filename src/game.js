@@ -23,7 +23,7 @@ Game.prototype.init = function(initialState){
   this.columnCount = input.columnCount;
 
   this.board = new Board( this.cells );
-  this.timeout = 500;
+  this.timeout = 100;
 };
 
 Game.prototype.iterate = function(){
