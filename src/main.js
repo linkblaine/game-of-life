@@ -24,11 +24,11 @@ $(document).ready(function(){
   var game = new Game(params);
   var view = new View(game);
 
-  setInterval( function(){
-    game.iterate();
+  var interval = setInterval( function(){
+    var numCellsChanged = game.iterate();
     view.paintCells();
     view.updateIterationCount( game.iterationCount );
+    numCellsChanged  == 0 ? clearInterval( interval ) : false;
   }, game.timeout);
-
 });
 
