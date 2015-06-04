@@ -11,11 +11,11 @@ var Game = function( params ){
 };
 
 Game.prototype.init = function( params ){
-  this.initialState = params.initialState ||  '-----,' +
-                                              '--x--,' +
-                                              '--x--,' +
-                                              '--x--,' +
-                                              '-----,' ;
+  this.initialState = params ? params.initialState :  '-----,' +
+                                                      '--x--,' +
+                                                      '--x--,' +
+                                                      '--x--,' +
+                                                      '-----,' ;
   
   var input = inputParser.parse( this.initialState ); 
   this.cells = input.cells;
@@ -23,7 +23,7 @@ Game.prototype.init = function( params ){
   this.columnCount = input.columnCount;
 
   this.board = new Board( this.cells );
-  this.timeout = params.timeout;
+  this.timeout = params ? params.timeout : 100;
 };
 
 Game.prototype.iterate = function(){
