@@ -4,8 +4,8 @@ var Game = function(initialState){
   this.board;
   this.numberOfIterations;
   this.timeout;
-  this.numberOfRows;
-  this.numberOfColumns;
+  this.rowCount;
+  this.columnCount;
 
   this.init(initialState);
 };
@@ -18,8 +18,8 @@ Game.prototype.init = function(initialState){
                                       '-----,' ;
   var input = inputParser.parse( this.initialState ); 
   this.cells = input.cells;
-  this.numberOfRows = input.rowCount;
-  this.numberOfColumns = input.columnCount;
+  this.rowCount = input.rowCount;
+  this.columnCount = input.columnCount;
 
   this.board = new Board( this.cells );
   this.numberOfIterations = 100;
@@ -43,6 +43,6 @@ Game.prototype.toString = function(){
     str = str + ( this.board.coordinates[key].isAlive ? "x" : "-"); 
   }
 
-  var regex = new RegExp('.{1,' + this.numberOfRows + '}', "g");
+  var regex = new RegExp('.{1,' + this.rowCount + '}', "g");
   return str.match(regex).join(',');
 };

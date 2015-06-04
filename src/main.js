@@ -22,7 +22,7 @@ $(document).ready(function(){
 
   var game = new Game(initialState);
 
-  drawBoard( game.numberOfRows, game.numberOfColumns);
+  drawBoard( game.rowCount, game.columnCount);
   paintCells( game.board );
 
   setInterval( function(){
