@@ -23,8 +23,6 @@ $(document).ready(function(){
   var game = new Game(initialState);
   var view = new View(game);
 
-  view.drawBoard();
-
   setInterval( function(){
     game.iterate();
     view.paintCells();
