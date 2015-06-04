@@ -1,5 +1,6 @@
 var View = function( game ){
   this.game = game;
+  this.drawBoard();
   this.paintCells();
 };
 
