@@ -8,7 +8,7 @@ View.prototype.paintCells = function(){
   this.game.cells.forEach( function(cell){
     $( '#row-' + cell.x + '>' +'#column-' + cell.y ).toggleClass( 'alive', cell.isAlive  ); 
   });  
-}
+};
 
 View.prototype.drawBoard = function(){
   for(var i = 0; i < this.game.rowCount; i++){
@@ -19,4 +19,8 @@ View.prototype.drawBoard = function(){
       $('#'+rowId).append("<td id=" +columnId +" class='column'></td>");
     }
   }
-}
+};
+
+View.prototype.updateIterationCount = function( count ){
+  $('#itr-count').text( count );
+};
