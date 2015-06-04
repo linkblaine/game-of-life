@@ -27,13 +27,17 @@ Game.prototype.init = function( params ){
 };
 
 Game.prototype.iterate = function(){
+  var changedCellCount = 0;
+  
   this.cells.map(function(cell){
-    return cell.board.shouldFlipCell( cell ) && cell;
-  }).forEach(function(cell){
+    return cell.board.shouldFlipCell( cell ) ? cell : '';
+  }).filter(function(e){ return e}).forEach(function(cell){
+    changedCellCount++;
     cell.isAlive = !cell.isAlive;
   });
 
   this.iterationCount++;
+  return changedCellCount;
 };
 
 Game.prototype.toString = function(){
