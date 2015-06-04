@@ -4,7 +4,7 @@ var Board = function(cells){
   for(var i = 0; i < cells.length; i++){
     cell = cells[i];
     cell.board = this;
-    this.coordinates[cell.getKey()] = cell;
+    this.coordinates[cell.key] = cell;
   }
 
 };

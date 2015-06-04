@@ -5,15 +5,6 @@ describe('Cell', function(){
     testCell = new Cell(0,0); 
   });
 
-  describe('getKey', function(){
-    it('Should have a getKey function', function(){
-      expect(testCell.getKey).toBeDefined();  
-    });
-
-    it('Should have a key as x:y', function(){
-      expect(testCell.getKey()).toEqual('0:0'); 
-    });
-  });
   
   describe('isAlive', function(){
 
