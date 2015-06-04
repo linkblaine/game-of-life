@@ -20,7 +20,7 @@ $(document).ready(function(){
   '-----xx-xx---x------,' +
   '-----xx-xx---x------,' ;
 
-  var params = {initialState: init, timeout: 500}
+  var params = {initialState: init, timeout: 100}
   var game = new Game(params);
   var view = new View(game);
 
