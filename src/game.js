@@ -2,7 +2,7 @@ var Game = function(initialState){
   this.initialState;
   this.cells; 
   this.board;
-  this.numberOfIterations;
+  this.iterationCount;
   this.timeout;
   this.rowCount;
   this.columnCount;
@@ -16,23 +16,21 @@ Game.prototype.init = function(initialState){
                                       '--x--,' +
                                       '--x--,' +
                                       '-----,' ;
+  
   var input = inputParser.parse( this.initialState ); 
   this.cells = input.cells;
   this.rowCount = input.rowCount;
   this.columnCount = input.columnCount;
 
   this.board = new Board( this.cells );
-  this.numberOfIterations = 100;
   this.timeout = 500;
 };
 
 Game.prototype.iterate = function(){
-  var cellsToChange =  $.map( this.board.coordinates, function(cell){
-    return cell.board.shouldFlipCell( cell ) ? cell : undefined;
-  });
-
-  $.each( cellsToChange, function(){
-    this.isAlive = !this.isAlive;
+  this.cells.map(function(cell){
+    return cell.board.shouldFlipCell( cell ) && cell;
+  }).forEach(function(cell){
+    cell.isAlive = !cell.isAlive;
   })
 };
 
