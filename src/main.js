@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  var initialState = 
+  var init = 
   '--------------------,' +
   '------------xx------,' +
   '-----------xx-------,' +
@@ -20,7 +20,8 @@ $(document).ready(function(){
   '-----xx-xx---x------,' +
   '-----xx-xx---x------,' ;
 
-  var game = new Game(initialState);
+  var params = {initialState: init, timeout: 500}
+  var game = new Game(params);
   var view = new View(game);
 
   setInterval( function(){
