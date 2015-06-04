@@ -31,15 +31,16 @@ Game.prototype.iterate = function(){
     return cell.board.shouldFlipCell( cell ) && cell;
   }).forEach(function(cell){
     cell.isAlive = !cell.isAlive;
-  })
+  });
 };
 
 Game.prototype.toString = function(){
   var str = '';
+  var regex = new RegExp('.{1,' + this.rowCount + '}', "g");
 
   this.cells.forEach(function(cell){
     str = str + ( cell.isAlive ? "x" : "-"); 
-  })
-  var regex = new RegExp('.{1,' + this.rowCount + '}', "g");
+  });
+
   return str.match(regex).join(',');
 };
