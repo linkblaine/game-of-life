@@ -2,7 +2,7 @@ var Game = function( params ){
   this.initialState;
   this.cells; 
   this.board;
-  this.iterationCount;
+  this.iterationCount = 0;
   this.timeout;
   this.rowCount;
   this.columnCount;
@@ -32,6 +32,8 @@ Game.prototype.iterate = function(){
   }).forEach(function(cell){
     cell.isAlive = !cell.isAlive;
   });
+
+  this.iterationCount++;
 };
 
 Game.prototype.toString = function(){
