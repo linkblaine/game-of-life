@@ -37,10 +37,9 @@ Game.prototype.iterate = function(){
 Game.prototype.toString = function(){
   var str = '';
 
-  for(key in this.board.coordinates){
-    str = str + ( this.board.coordinates[key].isAlive ? "x" : "-"); 
-  }
-
+  this.cells.forEach(function(cell){
+    str = str + ( cell.isAlive ? "x" : "-"); 
+  })
   var regex = new RegExp('.{1,' + this.rowCount + '}', "g");
   return str.match(regex).join(',');
 };
