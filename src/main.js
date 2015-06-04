@@ -27,6 +27,7 @@ $(document).ready(function(){
   setInterval( function(){
     game.iterate();
     view.paintCells();
+    view.updateIterationCount( game.iterationCount );
   }, game.timeout);
 
 });
