@@ -12,6 +12,10 @@ describe( 'Game', function(){
       game.iterate();
       expect(game.toString()).toEqual('-----,-----,-xxx-,-----,-----');
     });
+    it('should increase the iterationCount', function(){
+      game.iterate();
+      expect(game.iterationCount).toEqual(1); 
+    });
   });
 
 });
