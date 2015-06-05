@@ -26,5 +26,4 @@ Board.prototype.gameLogic = function( isAlive, neighborCount ){
 
 Board.prototype.shouldFlipCell = function( cell ){
   return this.getCellStatus( cell ) != cell.isAlive;
-
 };
