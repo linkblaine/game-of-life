@@ -2,33 +2,33 @@ $(document).ready(function(){
 
   var init = 
   '--------------------,' +
-  '------------xx------,' +
-  '-----------xx-------,' +
-  '----xx----xx--------,' +
+  '---xxxx-----xx--x---,' +
+  '------xx---xx--x----,' +
+  '----xx---xxx--x-x---,' +
   '-----xx-xx---x------,' +
   'x-x---xx-----x------,' +
-  'x-x----xx----x------,' +
-  'x--xx---------------,' +
-  'xxx---xx--xxx-------,' +
-  'x-------------------,' +
-  'x-------------------,' +
+  'x-x----xx----x-xx---,' +
+  'x--xx----------xxx--,' +
+  'xxx---xx--xxx--x----,' +
+  'x---xxx-----xx--xx--,' +
+  'x--------xxx--------,' +
   '-----xx-xx---x------,' +
-  '-----xx-xx---x------,' +
-  '-----xx-xx---x------,' +
-  '-----xx-xx---x------,' +
-  '-----xx-xx---x------,' +
-  '-----xx-xx---x------,' +
-  '-----xx-xx---x------,' ;
+  '--x--xx-xx---x--xx--,' +
+  '--x--x-----x-xxx---x,' +
+  '--xx-xxxxx---xxx----,' +
+  '--x--xx-xx---xxx----,' +
+  '--x--xx-xx---x------,' +
+  '---xxxx-xx--xx------,' ;
 
   var params = {initialState: init, timeout: 100}
   var game = new Game(params);
   var view = new View(game);
+  var changedCellsCache = [];
 
   var interval = setInterval( function(){
-    var numCellsChanged = game.iterate();
+    game.iterate() ? true : clearInterval( interval );
     view.paintCells();
     view.updateIterationCount( game.iterationCount );
-    numCellsChanged  == 0 ? clearInterval( interval ) : false;
   }, game.timeout);
 });
 

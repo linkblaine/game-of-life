@@ -6,6 +6,7 @@ var Game = function( params ){
   this.timeout;
   this.rowCount;
   this.columnCount;
+  this.boardCache = [];
 
   this.init(params);
 };
@@ -27,17 +28,17 @@ Game.prototype.init = function( params ){
 };
 
 Game.prototype.iterate = function(){
-  var changedCellCount = 0;
-  
   this.cells.map(function(cell){
     return cell.board.shouldFlipCell( cell ) ? cell : '';
   }).filter(function(e){ return e}).forEach(function(cell){
-    changedCellCount++;
     cell.isAlive = !cell.isAlive;
   });
 
   this.iterationCount++;
-  return changedCellCount;
+  this.boardCache.push( this.toString() );
+
+  console.log(this.boardCache);
+  return  this.shouldEndGame();
 };
 
 Game.prototype.toString = function(){
@@ -49,4 +50,10 @@ Game.prototype.toString = function(){
   });
 
   return str.match(regex).join(',');
+};
+
+Game.prototype.shouldEndGame = function(){
+  var wasChanged = this.boardCache[this.iterationCount - 1].length != 0;
+  var isNotRepeater= this.boardCache[this.iterationCount - 1] != this.boardCache[this.iterationCount - 3];
+  return (wasChanged && isNotRepeater);
 };
