@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
-  var init = BoardGenerator.generate( 65, 65 );
-  var params = {initialState: init, timeout: 100}
+  var init = BoardGenerator.generate( 50, 50 );
+  var params = {initialState: init, timeout: 0}
 
   var game = new Game(params);
   var view = new View(game);
