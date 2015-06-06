@@ -36,8 +36,6 @@ Game.prototype.iterate = function(){
 
   this.iterationCount++;
   this.boardCache.push( this.toString() );
-
-  console.log(this.boardCache);
   return  this.shouldEndGame();
 };
 
