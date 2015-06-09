@@ -1,6 +1,6 @@
-$(document).ready(function(){
+document.addEventListener('DOMContentLoaded',function(){
 
-  var init = BoardGenerator.generate( 50, 50 );
+  var init = BoardGenerator.generate( 100, 100 );
   var params = {initialState: init, timeout: 0}
 
   var game = new Game(params);

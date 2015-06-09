@@ -1,26 +1,43 @@
+'use strict'
 var View = function( game ){
   this.game = game;
-  this.drawBoard();
+  this.pixelHeight = 5; 
+  this.pixelWidth  = 5; 
+  this.canvas = document.getElementById('game-board');
+  this.context = this.canvas.getContext('2d');
+
+  this.resize( this.game.columnCount * this.pixelWidth, 
+               this.game.rowCount * this.pixelHeight);
+
   this.paintCells();
 };
 
 View.prototype.paintCells = function(){
+  var self = this; 
+ 
+  this.clear();
+  this.context.beginPath();
+  this.context.fillStyle = 'black';
+  this.context.stroeStyle = 'black';
+
   this.game.cells.forEach( function(cell){
-    $( '#row-' + cell.x + '>' +'#column-' + cell.y ).toggleClass( 'alive', cell.isAlive  ); 
-  });  
+    if( cell.isAlive ){
+      this.context.fillRect( cell.x * this.pixelWidth, 
+                             cell.y * this.pixelHeight, 
+                             this.pixelWidth, 
+                             this.pixelHeight);
+    }}.bind(self));  
 };
 
-View.prototype.drawBoard = function(){
-  for(var i = 0; i < this.game.rowCount; i++){
-    var rowId = 'row-' + i;
-    $('#game-board').append("<tr id="+ rowId +" class='row'></tr>");
-    for(var j = 0; j < this.game.columnCount; j++){
-      var columnId = 'column-' + j;
-      $('#'+rowId).append("<td id=" +columnId +" class='column'></td>");
-    }
-  }
-};
+View.prototype.clear = function(){
+  this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+}
+
+View.prototype.resize = function(height, width){
+  this.canvas.height = height; 
+  this.canvas.width  = width; 
+}
 
 View.prototype.updateIterationCount = function( count ){
-  $('#itr-count').text( count );
+  document.getElementById('itr-count').innerText = count;
 };
