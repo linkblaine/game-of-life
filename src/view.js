@@ -14,11 +14,12 @@ var View = function( game ){
 
 View.prototype.paintCells = function(){
   var self = this; 
- 
+  var cell= document.getElementById('cell');
+  var bgColor = getComputedStyle( cell ).getPropertyValue('background-color');
+
   this.clear();
   this.context.beginPath();
-  this.context.fillStyle = 'black';
-  this.context.stroeStyle = 'black';
+  this.context.fillStyle = bgColor;
 
   this.game.cells.forEach( function(cell){
     if( cell.isAlive ){

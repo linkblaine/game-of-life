@@ -10,14 +10,18 @@
     <script src='./src/main.js' ></script>
   </head>
   <body>
-    <div class='board'>
-      <canvas id='game-board'>
-      
-      </canvas>
+    <div id='container'>
+      <div class='row'>
+        <div class='board'>
+          <canvas id='game-board'>
+          </canvas>
+        </div>
+        <div class='info'>
+          <label>Number of Iteration: </label>
+          <label id='itr-count'>0</label>
+        </div>
+      </div>
     </div>
-    <div class='info'>
-      <label>Number of Iteration: </label>
-      <label id='itr-count'>0</label>
-    </div>
+    <div id='cell'></div>
   </body>
 </html>
