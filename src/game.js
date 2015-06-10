@@ -52,6 +52,5 @@ Game.prototype.toString = function(){
 
 Game.prototype.shouldEndGame = function(){
   var wasChanged = this.boardCache[this.iterationCount - 1].length != 0;
-  var isNotRepeater= this.boardCache[this.iterationCount - 1] != this.boardCache[this.iterationCount - 3];
-  return (wasChanged && isNotRepeater);
+  return wasChanged; 
 };

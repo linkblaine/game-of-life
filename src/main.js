@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded',function(){
 
   var init = BoardGenerator.generate( 100, 100 );
-  var params = {initialState: init, timeout: 0}
+  var params = {initialState: init, timeout: 100}
 
   var game = new Game(params);
   var view = new View(game);
