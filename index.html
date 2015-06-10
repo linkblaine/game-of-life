@@ -11,14 +11,33 @@
   </head>
   <body>
     <div id='container'>
-      <div class='row'>
-        <div class='board'>
+        <div id='board'>
           <canvas id='game-board'>
           </canvas>
         </div>
-        <div class='info'>
-          <label>Number of Iteration: </label>
-          <label id='itr-count'>0</label>
+        <div id='input-container'>
+          <h2> Conways Game of Life </h2>
+          <form id='settings'>
+            <div>
+              <label for='rowCount'>Number of Rows</label>
+              <input type='number' id='rowCount' name='rowCount' min='0' max='250' value='50'/>
+            </div>
+            <div>
+              <label for='columnCount'>Number of Columns</label>
+              <input type='number' id='columnCount' name='columnCount' min='0' max='250' value='50' />
+            </div>
+            <div>
+              <label for='timeout'>Tick Interval (ms)</label>
+              <input type='number' id='timeout' name='timeout' min='0' max='5000' value='100' />
+            </div>
+            <div>
+              <label for='initial'>Initial Board</label>
+              <input type='text' id='initial' name='initial' value='Random' disabled='true'>
+            </div>
+            <div>
+              <input type='submit' name='timeout' value='Go!' />
+            </div>
+          </form> 
         </div>
       </div>
     </div>

@@ -1,13 +1,76 @@
 body{
-  background-color: #B88F61;
+  background-color: #FFFFFF;
 }
 
 #container{
-  background-color: #F7DFAD;
-  width: 80%;
-  margin: 0 auto;}
+  width: 80vw;
+  margin: 0 auto;
+  margin-top: 20px;}
 
-#cell{
-  background-color: #8F3636;
+#board{
+  display: inline-block;
+  background-color: #F2FFC7;
+  width: 50vw;
+  margin: 0 auto;
+  text-align: center;
+  outline: none;
+  border-color: #A6FFAA;
+  box-shadow: 0 0 30px #A6FFAA; 
 }
 
+#input-container{
+  width: 80%;
+  margin: 0 auto;
+  border-color: #A6FFAA;
+  box-shadow: 0 0 30px #A6FFAA; 
+  border-radius: 15px;
+}
+
+#input-container > h2{
+  text-align: center;
+  padding-top: 5px;
+}
+
+#cell{
+  background-color: #0586FF;
+}
+
+form#settings{
+  width: 50%;
+  margin: 0 auto;
+}
+
+form#settings > div{
+  margin: 0 auto;
+  padding: 5px;
+  text-align: center;
+}
+
+form#settings input{
+  font-size: .75em;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+form#settings label{
+  width: 100%;
+  font-size: .75em;
+  display: block;
+}
+
+form#settings input:focus {
+  outline: none;
+  text-align: center;
+  border-color: #A6FFAA;
+  box-shadow: 0 0 7px #A6FFAA;
+  background-color: #FFFFFF;
+}
+
+form#settings input:active {
+  outline: none;
+  text-align: center;
+  border-color: #A6FFAA;
+  box-shadow: 0 0 7px #A6FFAA;
+  background-color: #FFFFFF;
+}
