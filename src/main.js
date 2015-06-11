@@ -1,17 +1,23 @@
 document.addEventListener('DOMContentLoaded',function(){
 
-  var init = BoardGenerator.generate( 100, 100 );
-  var params = {initialState: init, timeout: 100}
+  
+  document.getElementById('settings').addEventListener('submit', function(event){
+    event.preventDefault();
+    var target = event.target;
+     
+    var init = BoardGenerator.generate( target.columnCount.value, target.rowCount.value);
+    var params = {initialState: init, timeout: target.timeout.value}
+    
+    var game = new Game(params);
+    var view = new View(game);
 
-  var game = new Game(params);
-  var view = new View(game);
-
-  var changedCellsCache = [];
-
-  var interval = setInterval( function(){
-    game.iterate() ? true : clearInterval( interval );
-    view.paintCells();
-    view.updateIterationCount( game.iterationCount );
-  }, game.timeout);
+    view.toggleInput(false);
+    view.resize();
+    var interval = setInterval( function(){
+      game.iterate() ? true : clearInterval( interval );
+      view.paintCells();
+    }, game.timeout);
+  });
 });
+
 

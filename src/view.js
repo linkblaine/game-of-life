@@ -1,15 +1,21 @@
 'use strict'
 var View = function( game ){
   this.game = game;
+  
   this.pixelHeight = 5; 
   this.pixelWidth  = 5; 
+ 
   this.canvas = document.getElementById('game-board');
+  this.formDiv = document.getElementById('input-container');
+  this.boardDiv = document.getElementById('board');
   this.context = this.canvas.getContext('2d');
 
-  this.resize( this.game.columnCount * this.pixelWidth, 
-               this.game.rowCount * this.pixelHeight);
+  this.formDiv.addEventListener("transitionend", function () {
+    this.formDiv.className += " hidden";
+    this.toggleBoard( true );
+  }.bind(this), true);  
 
-  this.paintCells();
+
 };
 
 View.prototype.paintCells = function(){
@@ -34,11 +40,29 @@ View.prototype.clear = function(){
   this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 }
 
-View.prototype.resize = function(height, width){
-  this.canvas.height = height; 
-  this.canvas.width  = width; 
+View.prototype.resize = function(){
+  this.canvas.height = window.innerHeight - 30; 
+  this.canvas.width  = window.innerWidth; 
 }
 
 View.prototype.updateIterationCount = function( count ){
   document.getElementById('itr-count').innerText = count;
+};
+
+View.prototype.toggleBoard = function(makeVisible){
+  if(makeVisible){
+    this.boardDiv.className -= "invisible";
+    this.boardDiv.className -= "hidden";
+  }else{
+    this.boardDiv.className += " invisible";
+  }
+};
+
+View.prototype.toggleInput = function(makeVisible){
+  if(makeVisible){
+    this.formDiv.className -= "invisible";
+    this.formDiv.className -= "hidden";
+  }else{
+    this.formDiv.className += " invisible";
+  }
 };

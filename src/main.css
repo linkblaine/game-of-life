@@ -8,7 +8,6 @@ body{
   margin-top: 20px;}
 
 #board{
-  display: inline-block;
   background-color: #F2FFC7;
   width: 50vw;
   margin: 0 auto;
@@ -16,6 +15,15 @@ body{
   outline: none;
   border-color: #A6FFAA;
   box-shadow: 0 0 30px #A6FFAA; 
+  transition: opacity 0.4s linear;
+}
+
+#board.invisible{
+  opacity: 0;
+}
+
+#board.invisible.hidden{
+  display: none;
 }
 
 #input-container{
@@ -24,11 +32,21 @@ body{
   border-color: #A6FFAA;
   box-shadow: 0 0 30px #A6FFAA; 
   border-radius: 15px;
+  transition: opacity 0.4s linear;
+}
+
+#input-container.invisible{
+  opacity: 0;
+}
+
+#input-container.invisible.hidden{
+  display: none;
 }
 
 #input-container > h2{
   text-align: center;
   padding-top: 5px;
+  font-family: 'Nova Square', cursive;
 }
 
 #cell{
