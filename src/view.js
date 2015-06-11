@@ -1,35 +1,33 @@
 'use strict'
+
 var View = function( game ){
   this.game = game;
   
-  this.pixelHeight = 5; 
-  this.pixelWidth  = 5; 
- 
+  this.pixelHeight = 0;
+  this.pixelWidth  = 0; 
   this.canvas = document.getElementById('game-board');
   this.formDiv = document.getElementById('input-container');
   this.boardDiv = document.getElementById('board');
+  this.cellDiv  = document.getElementById('cell');
   this.context = this.canvas.getContext('2d');
+  this.formDiv.addEventListener("transitionend", this.initalizeBoard.bind(this), true);  
+};
 
-  this.formDiv.addEventListener("transitionend", function () {
-    this.formDiv.className += " hidden";
-    this.toggleBoard( true );
-    this.resize();
-    this.setPixleSize();
-  }.bind(this), true);  
-
-
+View.prototype.initalizeBoard = function(){
+  this.formDiv.className += " hidden";
+  this.toggleBoard( true );
+  this.resize();
+  this.setPixleSize();
 };
 
 View.prototype.setPixleSize = function(){
-  this.pixelHeight = document.getElementById('board').clientHeight / this.game.rowCount
-  this.pixelWidth =  document.getElementById('board').clientWidth / this.game.columnCount
+  this.pixelHeight = this.boardDiv.clientHeight / this.game.rowCount
+  this.pixelWidth =  this.boardDiv.clientWidth / this.game.columnCount
 };
 
 View.prototype.paintCells = function(){
-  var self = this; 
-  var cell= document.getElementById('cell');
-  var bgColor = getComputedStyle( cell ).getPropertyValue('background-color');
-
+  var bgColor = getComputedStyle( this.cellDiv ).getPropertyValue('background-color');
+  
   this.clear();
   this.context.beginPath();
   this.context.fillStyle = bgColor;
@@ -40,7 +38,7 @@ View.prototype.paintCells = function(){
                              cell.y * this.pixelHeight, 
                              this.pixelWidth, 
                              this.pixelHeight);
-    }}.bind(self));  
+    }}.bind(this));  
 };
 
 View.prototype.clear = function(){
@@ -48,9 +46,9 @@ View.prototype.clear = function(){
 }
 
 View.prototype.resize = function(){
-  document.getElementById('board').style.height = window.innerHeight - 30;
+  this.boardDiv.style.height = window.innerHeight - 30;
   this.canvas.height = window.innerHeight - 30; 
-  this.canvas.width  = document.getElementById('board').clientWidth; 
+  this.canvas.width  = this.boardDiv.clientWidth; 
 }
 
 View.prototype.updateIterationCount = function( count ){
