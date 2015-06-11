@@ -13,9 +13,16 @@ var View = function( game ){
   this.formDiv.addEventListener("transitionend", function () {
     this.formDiv.className += " hidden";
     this.toggleBoard( true );
+    this.resize();
+    this.setPixleSize();
   }.bind(this), true);  
 
 
+};
+
+View.prototype.setPixleSize = function(){
+  this.pixelHeight = document.getElementById('board').clientHeight / this.game.rowCount
+  this.pixelWidth =  document.getElementById('board').clientWidth / this.game.columnCount
 };
 
 View.prototype.paintCells = function(){
@@ -41,8 +48,9 @@ View.prototype.clear = function(){
 }
 
 View.prototype.resize = function(){
+  document.getElementById('board').style.height = window.innerHeight - 30;
   this.canvas.height = window.innerHeight - 30; 
-  this.canvas.width  = window.innerWidth; 
+  this.canvas.width  = document.getElementById('board').clientWidth; 
 }
 
 View.prototype.updateIterationCount = function( count ){

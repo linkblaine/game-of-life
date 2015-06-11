@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded',function(){
     var view = new View(game);
 
     view.toggleInput(false);
-    view.resize();
+
     var interval = setInterval( function(){
       game.iterate() ? true : clearInterval( interval );
       view.paintCells();

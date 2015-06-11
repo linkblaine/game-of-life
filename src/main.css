@@ -15,7 +15,7 @@ body{
   outline: none;
   border-color: #A6FFAA;
   box-shadow: 0 0 30px #A6FFAA; 
-  transition: opacity 0.4s linear;
+  transition: opacity 0.9s linear;
 }
 
 #board.invisible{
@@ -32,7 +32,7 @@ body{
   border-color: #A6FFAA;
   box-shadow: 0 0 30px #A6FFAA; 
   border-radius: 15px;
-  transition: opacity 0.4s linear;
+  transition: opacity 0.9s linear;
 }
 
 #input-container.invisible{
