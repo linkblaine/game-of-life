@@ -27,6 +27,9 @@ Game.prototype.init = function( params ){
   this.timeout = params ? params.timeout : 100;
 };
 
+
+
+
 Game.prototype.iterate = function(){
   this.cells.map(function(cell){
     return cell.board.shouldFlipCell( cell ) ? cell : '';
@@ -35,8 +38,8 @@ Game.prototype.iterate = function(){
   });
 
   this.iterationCount++;
-  this.boardCache.push( this.toString() );
-  return  this.shouldEndGame();
+  //this.boardCache.push( this.toString() );
+  return true; //this.shouldEndGame();
 };
 
 Game.prototype.toString = function(){

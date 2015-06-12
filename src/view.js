@@ -9,13 +9,17 @@ var View = function( game ){
   this.formDiv = document.getElementById('input-container');
   this.boardDiv = document.getElementById('board');
   this.cellDiv  = document.getElementById('cell');
+
   this.context = this.canvas.getContext('2d');
+
   this.formDiv.addEventListener("transitionend", this.initalizeBoard.bind(this), true);  
+  this.toggleElement(this.formDiv, false );
 };
 
 View.prototype.initalizeBoard = function(){
-  this.formDiv.className += " hidden";
-  this.toggleBoard( true );
+  //todo: do i need this? I don't think so...:
+  this.toggleElement(this.formDiv, false );
+  this.toggleElement(this.boardDiv, true );
   this.resize();
   this.setPixleSize();
 };
@@ -26,6 +30,8 @@ View.prototype.setPixleSize = function(){
 };
 
 View.prototype.paintCells = function(){
+  var self = this;
+
   var bgColor = getComputedStyle( this.cellDiv ).getPropertyValue('background-color');
   
   this.clear();
@@ -38,7 +44,7 @@ View.prototype.paintCells = function(){
                              cell.y * this.pixelHeight, 
                              this.pixelWidth, 
                              this.pixelHeight);
-    }}.bind(this));  
+    }}.bind(self));  
 };
 
 View.prototype.clear = function(){
@@ -51,24 +57,17 @@ View.prototype.resize = function(){
   this.canvas.width  = this.boardDiv.clientWidth; 
 }
 
+//I know I don't do anything with this but I want to. 
 View.prototype.updateIterationCount = function( count ){
   document.getElementById('itr-count').innerText = count;
 };
 
-View.prototype.toggleBoard = function(makeVisible){
+View.prototype.toggleElement = function(element, makeVisible){
   if(makeVisible){
-    this.boardDiv.className -= "invisible";
-    this.boardDiv.className -= "hidden";
+    element.className -= "invisible";
+    element.className -= "hidden";
   }else{
-    this.boardDiv.className += " invisible";
+    element.className += " invisible";
   }
 };
 
-View.prototype.toggleInput = function(makeVisible){
-  if(makeVisible){
-    this.formDiv.className -= "invisible";
-    this.formDiv.className -= "hidden";
-  }else{
-    this.formDiv.className += " invisible";
-  }
-};
